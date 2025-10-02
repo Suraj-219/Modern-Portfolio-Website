@@ -10,6 +10,25 @@ html, body{
     height: 100%;
 }
 
+#minicircle {
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    z-index: 99999;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.bounding {
+    width: fit-content;
+    overflow: hidden;
+}
+
+.bounding .boundingelem {
+    transform: translateY(100%);
+}
+
 #main{
     width: 100%;
     background-color: black;
@@ -56,16 +75,22 @@ html, body{
 }
 
 .blocktext{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
     width: fit-content;
 }
 
 .blocktext h5{
     text-transform: uppercase;
     font-size: 15px;
-    text-align: right;
+    text-align: right  !important;
 }
 
 #smallheadings{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
     margin-top: 100px;
     padding: 30px;
 }
