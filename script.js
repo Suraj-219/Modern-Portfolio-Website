@@ -28,6 +28,8 @@ function firstPageAnim(){
         })
 }
 
+var timeout;
+
 function circleChaptaKaro(){
     var xscale = 1;
     var yscale = 1;
@@ -36,19 +38,27 @@ function circleChaptaKaro(){
     var yprev = 0;
 
     window.addEventListener("mousemove", (dets)=> {
-        var xdiff = dets.clientX - xprev;
-        var ydiff = dets.clientY - yprev;
+        clearTimeout(timeout);
+        
+        xscale = gsap.utils.clamp(.8, 1.2, dets.clientX - xprev);
+        yscale = gsap.utils.clamp(.8, 1.2, dets.clientY - yprev);
 
         xprev = dets.clientX;
-        yprev = dets.clientY;
-    })
+        yprev = dets.clientY;  
+        
+        circleMouseFollower(xscale, yscale);
+
+        timeout = setTimeout(() => {
+            document.querySelector("#minicircle").style.transform = `translate(${dets.clientX}px, ${dets.clientY}px) scale(1, 1)`;
+        }, 100);
+    });
 }
 
 circleChaptaKaro();
 
-function circleMouseFollower(){
+function circleMouseFollower(xscale, yscale){
     window.addEventListener("mousemove", function(dets){
-        document.querySelector("#minicircle").style.transform = `translate(${dets.clientX}px, ${dets.clientY}px)`;
+        document.querySelector("#minicircle").style.transform = `translate(${dets.clientX}px, ${dets.clientY}px) scale(${xscale}, ${yscale})`;
     })
 }
 
