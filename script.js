@@ -54,7 +54,6 @@ function circleChaptaKaro(){
     });
 }
 
-circleChaptaKaro();
 
 function circleMouseFollower(xscale, yscale){
     window.addEventListener("mousemove", function(dets){
@@ -62,5 +61,15 @@ function circleMouseFollower(xscale, yscale){
     })
 }
 
+circleChaptaKaro();
 circleMouseFollower();
 firstPageAnim();
+
+document.querySelectorAll(".elem").forEach(function (elem) {
+    elem.addEventListener("mousemove", function (dets) {
+        gsap.to(elem.querySelector("img"), {
+            opacity: 1,
+            ease: Power1,
+        });
+    });
+});
