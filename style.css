@@ -142,6 +142,31 @@ html, body{
     height: 142vh;
 }
 
+#about img, 
+#about #about-avatar {
+    width: 200px;            
+    height: 200px;           
+    object-fit: cover;       
+    border-radius: 50%;      
+    background-color: #222;  
+    display: block;          
+    flex-shrink: 0;          
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45); 
+    pointer-events: none;    
+}
+
+#about {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    gap: 50px;
+    padding: 10vw 10vw;
+    padding-left: 40vw;
+    color: #fff;
+    background-color: black;
+}
+
+
 .elem{
     position: relative;
     display: flex;
