@@ -139,7 +139,7 @@ html, body{
     padding-right: 10vw;
     padding-top: 110px;
     width: 100%;
-    height: 140vh;
+    height: 142vh;
 }
 
 .elem{
@@ -164,10 +164,12 @@ html, body{
 }
 
 .elem img {
-    display: none;
-    height: 135%;
-    z-index: 999;
+    opacity: 0;
     position: absolute;
+    height: 120%;
+    z-index: 999;
+    pointer-events: none;
+    transition: 0.3s ease;
 }
 
 #about{

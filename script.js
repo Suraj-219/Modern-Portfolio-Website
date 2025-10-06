@@ -10,11 +10,11 @@ function firstPageAnim(){
         y: '-10',
         opacity: 0,
         duration: 1.5,
-        ease: Expo.easeInOut
+        ease: "expo.inOut"
     })
         .to(".boundingelem", {
             y: 0,
-            ease: Expo.easeInOut,
+            ease: "expo.inOut",
             duration: 2,
             delay: -1,
             stagger: .2
@@ -66,10 +66,28 @@ circleMouseFollower();
 firstPageAnim();
 
 document.querySelectorAll(".elem").forEach(function (elem) {
+    var rotate = 0;
+    var diffrot = 0;
+
+    elem.addEventListener("mouseleave", function(){
+        gsap.to(elem.querySelector("img"), {
+            opacity: 0,
+            ease: "power3.out",
+            duration: 0.5,
+        });
+    });
+
     elem.addEventListener("mousemove", function (dets) {
+        var diff = dets.clientY - elem.getBoundingClientRect().top;
+        diffrot = dets.clientX - rotate;
+        rotate = dets.clientX;
+
         gsap.to(elem.querySelector("img"), {
             opacity: 1,
-            ease: Power1,
+            ease: "power3.out",
+            top: diff,
+            left: dets.clientX,
+            rotate: gsap.utils.clamp(-20, 20, diffrot * 0.5),
         });
     });
 });
